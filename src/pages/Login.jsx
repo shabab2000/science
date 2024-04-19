@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,9 +15,27 @@ export default function Login() {
 
     try {
       if (!email) {
-        alert("กรุณากรอกอีเมล!");
+        toast.warning("กรุณากรอกอีเมล !", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } else if (!password) {
-        alert("กรุณากรอกรหัสผ่าน !");
+        toast.warning("กรุณากรอกรหัสผ่าน !", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } else {
         setLoading(true);
         fetch("https://sciquiz.cloud/app/login.php", {
@@ -32,15 +51,36 @@ export default function Login() {
         })
           .then((response) => response.json())
           .then((responseJson) => {
-            setLoading(false);
+           
             if (responseJson.result === "success") {
               localStorage.setItem("uid", responseJson.user.id);
               setEmail("");
               setPassword("");
-              navigate("/home");
+              toast.success("เข้าสู่ระบบสำเร็จ!", {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                onClose: () => {
+                  window.location.href = "/" ; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
+                },
+              });
             } else {
               setLoading(false);
-              alert("แจ้งเตือน!", responseJson.result);
+              toast.warning(responseJson.result, {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
             }
           })
           .catch((error) => {
@@ -55,6 +95,7 @@ export default function Login() {
 
   return (
     <div className="container">
+      <ToastContainer />
       <div className="row pt-5">
         <div className="col-10 col-lg-6 mx-auto">
           <form className="Auth-form" onSubmit={handleSubmit}>
