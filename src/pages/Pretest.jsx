@@ -187,7 +187,7 @@ export default function Pretest() {
     Question();
   }, []);
 
-  //console.log(lesson);
+  console.log("555:" + questions.length);
 
   // สถานะของคำถามที่ถูกเลือก
   const [selectedAnswer, setSelectedAnswer] = useState({});
@@ -214,8 +214,6 @@ export default function Pretest() {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  console.log(selectedAnswer);
 
   return (
     <div className="container">
@@ -270,23 +268,33 @@ export default function Pretest() {
                   ))
               : ""}
           </div>
-          <div className="mt-5" style={{ textAlign: "center" }}>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
+          {questions.length > 0 ? (
+            <div>
+              <div className="mt-5" style={{ textAlign: "center" }}>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
 
-          <div className="mt-5" style={{ textAlign: "center" }}>
-            <button
-              onClick={() => onSubmit()}
-              disabled={Object.keys(selectedAnswer).length !== questions.length}
-              className="btn btn-success"
-            >
-              ส่งคำตอบ
-            </button>
+              <div className="mt-5" style={{ textAlign: "center" }}>
+                <button
+                  onClick={() => onSubmit()}
+                  disabled={
+                    Object.keys(selectedAnswer).length !== questions.length
+                  }
+                  className="btn btn-success"
+                >
+                  ส่งคำตอบ
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="alert alert-warning" role="alert">
+            ยังไม่มีแบบทดสอบบทนี้ !
           </div>
+          )}
         </div>
       </div>
     </div>
