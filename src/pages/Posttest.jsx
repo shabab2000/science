@@ -155,35 +155,35 @@ export default function Posttest() {
         .then((response) => response.json())
         .then((data) => {
           if (data.result === "success") {
-            if(data.status === "yes"){
-            toast.success("ทำแบบทดสอบหลังเรียนสำเร็จ!", {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              onClose: () => {
-                window.location.href = "/"; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
-              },
-            });
-          }else{
-            toast.error("ไม่ผ่าน! ได้ "+data.score, {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              onClose: () => {
-                window.location.href = "/learn/" + id; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
-              },
-            });
-          }
+            if (data.status === "yes") {
+              toast.success("ทำแบบทดสอบหลังเรียนสำเร็จ!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                onClose: () => {
+                  window.location.href = "/"; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
+                },
+              });
+            } else {
+              toast.error("ไม่ผ่าน! ได้ " + data.score, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                onClose: () => {
+                  window.location.href = "/learn/" + id; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
+                },
+              });
+            }
           } else {
             alert("Error:", data.result);
             // จัดการกรณีไม่ผ่านตามต้องการ
@@ -286,23 +286,33 @@ export default function Posttest() {
                   ))
               : ""}
           </div>
-          <div className="mt-5" style={{ textAlign: "center" }}>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
+          {questions.length > 0 ? (
+            <div>
+              <div className="mt-5" style={{ textAlign: "center" }}>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
 
-          <div className="mt-5" style={{ textAlign: "center" }}>
-            <button
-              onClick={() => onSubmit()}
-              disabled={Object.keys(selectedAnswer).length !== questions.length}
-              className="btn btn-success"
-            >
-              ส่งคำตอบ
-            </button>
-          </div>
+              <div className="mt-5" style={{ textAlign: "center" }}>
+                <button
+                  onClick={() => onSubmit()}
+                  disabled={
+                    Object.keys(selectedAnswer).length !== questions.length
+                  }
+                  className="btn btn-success"
+                >
+                  ส่งคำตอบ
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="alert alert-warning" role="alert">
+              ยังไม่มีแบบทดสอบบทนี้ !
+            </div>
+          )}
         </div>
       </div>
     </div>
