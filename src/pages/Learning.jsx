@@ -88,14 +88,7 @@ export default function Learning() {
         <div className="col-lg-8 col-12">
           <div style={{ textAlign: "center" }}>
             <div class="single-video">
-              <iframe
-                width="100%"
-                height="330"
-                src="https://www.youtube-nocookie.com/embed/8LWZSGNjuF0?rel=0&amp;controls=0&amp;showinfo=0"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen=""
-              ></iframe>
+            <iframe width="560" height="315" src={"https://www.youtube.com/embed/"+lesson.video} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               {/* <iframe width="100%" height="450" class="embed-responsive-item" src="https://youtube.com/embed/<?php echo $rowe['youtube']; ?>?autoplay=1&mute=1" allowfullscreen></iframe> */}
             </div>
           </div>
