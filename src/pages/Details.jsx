@@ -84,7 +84,7 @@ export default function Details() {
         </Modal.Header>
         <Modal.Body>กำลังโหลด...</Modal.Body>
       </Modal>
-      <h3 className="pt-5 text-center">บทเรียน {id}</h3>
+      <h3 className="pt-5 text-center">บทเรียน {lesson?.chapter}</h3>
       <div className="row ">
         <div className="col-lg-8 col-12">
           <div style={{ textAlign: "center" }}>
