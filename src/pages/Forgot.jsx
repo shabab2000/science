@@ -14,6 +14,14 @@ export default function Forgot() {
 
   const navigate = useNavigate();
 
+  const validatePassword = () => {
+    // ใช้ regular expression เพื่อตรวจสอบความแข็งของรหัสผ่าน
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  };
+
+  const isValid = validatePassword();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -109,8 +117,8 @@ export default function Forgot() {
           progress: undefined,
           theme: "light",
         });
-      } else if (password.length < 6) {
-        toast.warning("กรุณากรอกรหัสผ่านมากกว่า 6 ตัว!", {
+      }  else if (!isValid) {
+        toast.warning("รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัว และประกอบด้วยตัวอักษรตัวเลขและสัญลักษณ์ !", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
