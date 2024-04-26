@@ -142,7 +142,7 @@ export default function Forgot() {
               });
             } else {
               setLoading(false);
-              toast.warning(responseJson.result, {
+              toast.warning(responseJson, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
