@@ -124,8 +124,9 @@ export default function Forgot() {
         })
           .then((response) => response.json())
           .then((responseJson) => {
+            console.log(responseJson)
             if (responseJson === "success") {
-                setLoading(false);
+                
               toast.success("OTP ถูกต้อง!", {
                 position: "top-right",
                 autoClose: 2500,
@@ -136,6 +137,7 @@ export default function Forgot() {
                 progress: undefined,
                 theme: "light",
                 onClose: () => {
+                  setLoading(false);
                    setOtps(false);
                    setReset(true);
                 },
