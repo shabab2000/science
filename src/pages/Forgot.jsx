@@ -278,7 +278,7 @@ export default function Forgot() {
               <div className="Auth-form-content">
                 <h3 className="Auth-form-title text-center">ยืนยัน OTP</h3>
                 <div className="form-group mt-3">
-                  <label>รหัสผ่านใหม่</label>
+                  <label>กรอก OTP</label>
                   <input
                     name="otp"
                     value={otp}
