@@ -9,17 +9,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.init({
-      appId: "990d72d4-9b93-4ae6-a44d-f3d98938b036",
-    });
-  });
-</script>  
+
 </head>
   <body style="font-family: Noto Sans Thai, sans-serif;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- PushAlert Onsite Messaging -->
+<script type="text/javascript">
+    (function(d, t) {
+        var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+        g.src = "https://cdn.inwebr.com/inwebr_601fc3e4a8767f24c115998f1f99eac7.js";
+        s.parentNode.insertBefore(g, s);
+    }(document, "script"));
+</script>
+<!-- End PushAlert Onsite Messaging -->
   </body>
 </html>
