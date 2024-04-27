@@ -1,20 +1,22 @@
-import React from 'react'
-import addNotification from 'react-push-notification'
+import { useEffect } from 'react';
+import OneSignal from 'react-onesignal';
 
-export default function Test() {
-    const clickToNotification = ()=>{
-        addNotification({
-            title:'ยินดีต้อนรับ',
-            message:'555',
-            duration:5000,
-            native:true
-        })
-    }
+const Test = () => {
+  useEffect(() => {
+    OneSignal.init({
+      appId: "990d72d4-9b93-4ae6-a44d-f3d98938b036",
+    });
+  }, []);
+
+  const handleNotification = () => {
+    OneSignal.sendNotification("Hello, world!");
+  };
+
   return (
     <div>
-        <button onClick={()=> clickToNotification()} style={{margin:'100px'}} >
-            click
-        </button>
+      <button onClick={handleNotification}>Send Notification</button>
     </div>
-  )
-}
+  );
+};
+
+export default Test;
