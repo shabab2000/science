@@ -8,7 +8,6 @@ export default function Test() {
             message:'555',
             duration:5000,
             native:true
-
         })
     }
   return (
