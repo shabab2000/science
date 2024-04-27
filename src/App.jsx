@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import Notification from './pages/Notification';
 import Report_learn from './pages/Report_learn';
 import Report_quiz from './pages/Report_quiz';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="*" element={<NoPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/test" element={<Test />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<Forgot />} />
