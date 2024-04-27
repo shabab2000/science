@@ -1,30 +1,21 @@
-import React, { useState } from "react";
+import React from 'react'
+import addNotification from 'react-push-notification'
 
-const Test = () => {
-  const [permission, setPermission] = useState(Notification.permission);
+export default function Test() {
+    const clickToNotification = ()=>{
+        addNotification({
+            title:'ยินดีต้อนรับ',
+            message:'555',
+            duration:5000,
+            native:true
 
-  const requestPermission = () => {
-    Notification.requestPermission().then((permission) => {
-      setPermission(permission);
-    });
-  };
-
-  const showNotification = () => {
-    if (permission === "granted") {
-      new Notification("ข้อความที่ต้องการแจ้งเตือน");
-    } else {
-      Notification.requestPermission().then((permission) => {
-        setPermission(permission);
-      });
+        })
     }
-  };
-
   return (
     <div>
-      <button onClick={requestPermission}>ขออนุญาตแจ้งเตือน</button>
-      <button onClick={showNotification}>แสดงการแจ้งเตือน</button>
+        <button onClick={()=> clickToNotification()} style={{margin:'100px'}} >
+            click
+        </button>
     </div>
-  );
-};
-
-export default Test;
+  )
+}
