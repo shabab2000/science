@@ -8,7 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
-  </head>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "990d72d4-9b93-4ae6-a44d-f3d98938b036",
+    });
+  });
+</script>  
+</head>
   <body style="font-family: Noto Sans Thai, sans-serif;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
