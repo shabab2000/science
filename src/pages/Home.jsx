@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbars from "../Navbar";
+  import OneSignal from 'react-onesignal';
 
 export default function Home() {
   const isLoggedIn = localStorage.getItem("uid");
@@ -23,6 +24,15 @@ export default function Home() {
 
   useEffect(() => {
     lessons();
+  }, []);
+
+
+
+
+  useEffect(() => {
+    OneSignal.init({
+      appId: "990d72d4-9b93-4ae6-a44d-f3d98938b036"
+    });
   }, []);
 
   //console.log(lesson);
