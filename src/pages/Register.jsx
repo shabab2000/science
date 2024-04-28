@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Swal from 'sweetalert2'
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -102,19 +103,16 @@ export default function Register() {
               setEmail("");
               setTel("");
               setPassword("");
-              toast.success("ลงทะเบียนสำเร็จ!", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                onClose: () => {
-                  window.location.href = "/login" ; // ส่งผู้ใช้ไปยังหน้าเพจ /learn
-                },
-              });
+              Swal.fire({
+                title: 'Hello World!',
+                text: 'This is a sweet alert message',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                // หากผู้ใช้กดปุ่มยืนยัน
+                if (result.isConfirmed) {
+                  window.location.href = "/login" ;
+                }})
             } else {
               setLoading(false);
               alert("แจ้งเตือน!", responseJson);
