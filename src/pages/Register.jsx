@@ -104,8 +104,8 @@ export default function Register() {
               setTel("");
               setPassword("");
               Swal.fire({
-                title: 'Hello World!',
-                text: 'This is a sweet alert message',
+                title: 'ลงทะเบียนสำเร็จ!',
+                text: 'เข้าสู่ระบบได้เลย',
                 icon: 'success',
                 confirmButtonText: 'OK'
               }).then((result) => {
